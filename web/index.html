@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Cloud Status</title>
+  <meta name="description" content="Real-time cloud provider availability zone status across the globe." />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <svg class="logo-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <h1>Global Cloud Status</h1>
+      </div>
+      <div class="header-meta">
+        <span class="live-dot">● Live</span>
+        <span>Updated: <time id="last-updated">—</time></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="provider-filters">
+      <span class="filter-label">Providers:</span>
+      <button class="filter-btn active" data-provider="aws" type="button">
+        <span class="badge badge-aws">A</span>
+        Amazon Web Services
+      </button>
+      <button class="filter-btn active" data-provider="coreweave" type="button">
+        <span class="badge badge-coreweave">C</span>
+        CoreWeave
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <div class="map-container">
+      <svg id="world-map"></svg>
+      <div id="loading-overlay">
+        <div class="spinner"></div>
+        Loading status data…
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="legend">
+      <span class="legend-title">Status:</span>
+      <div class="legend-item"><span class="legend-dot" style="color:#22c55e"></span>Operational</div>
+      <div class="legend-item"><span class="legend-dot" style="color:#f59e0b"></span>Degraded</div>
+      <div class="legend-item"><span class="legend-dot" style="color:#ef4444"></span>Outage</div>
+      <div class="legend-item"><span class="legend-dot" style="color:#555e6e"></span>Unknown</div>
+    </div>
+    <div class="footer-note">
+      Sourced from AWS public status RSS feeds · Refreshes every 5 min
+    </div>
+  </footer>
+
+  <div id="tooltip"></div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
